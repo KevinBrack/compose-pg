@@ -1,0 +1,21 @@
+version: '3'
+services:
+  jenkins:
+    container_name: jenkins
+    image: jenkins/jenkins:lts
+    volumes:
+      - jenkins_home:/var/jenkins_home
+    ports:
+      - 8080:8080
+  express:
+    container_name: express
+    build: ./express
+    ports:
+      - "1337:1337"
+  client:
+    container_name: client
+    build: ./client
+    ports:
+      - "80:3000"
+volumes:
+  jenkins_home: {}
