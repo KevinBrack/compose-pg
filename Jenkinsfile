@@ -19,21 +19,21 @@ pipeline {
         stage('LAUNCH EXPRESS') {
             steps {
                 echo 'RUNNING EXPRESS CONTAINER'
-                sh 'docker run -d -p 1337:1337 --name express express:mine'
+                sh 'docker run -d --rm -p 1337:1337 --name express express:mine'
                 echo 'CONTAINER MOUNTED ON PORT 1337'
             }
         }
         stage('LAUNCH NEXTJS') {
             steps {
                 echo 'RUNNING NEXT CONTAINER'
-                sh 'docker run -d -p 80:3000 --name nextjs client:mine'
+                sh 'docker run -d --rm -p  80:3000 --name nextjs client:mine'
                 echo 'NEXTJS MOUNTED ON PORT 80'
             }
         }
         stage('LAUNCH POSTGRES') {
             steps {
                 echo 'LAUNCHING POSTGRES'
-                sh 'docker run -d -p 5432:5432 --name pg postgres'
+                sh 'docker run -d --rm -p 5432:5432 --name pg postgres'
                 echo 'POSTGRES MOUNTED ON PORT 5432'
             }
         }
