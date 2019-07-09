@@ -34,6 +34,20 @@ POSTGRES_USER
 
 POSTGRES_DB
 
+## Launching Jenkins
+
+```
+docker run \
+  -u root \
+  --rm \
+  -it \
+  -p 8080:8080 \
+  -p 50000:50000 \
+  -v jenkins-data:/var/jenkins_home \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  jenkinsci/blueocean
+```
+
 ## Monitoring with cAdvisor
 
 ```
